@@ -1,0 +1,36 @@
+﻿drop database if exists escola;
+
+create database escola if not exists;
+
+use escola;
+
+create table cursos(
+idcurso int primary key not null auto_increment,
+nome varchar(40) not null,
+descricao text not null,
+carga int not null,
+totaula int not null,
+ano int not null
+);
+
+insert into cursos values (
+'Android','Aprenda a desenvolver aplicações usando tecnologias como react native e Vue', 75, 38, 2019),
+('Arduino','Aprenda construir automações roboticas e eletricas utilizando o Arduino', 50, 34, 2018),
+('Python 3','Aprenda desenvolver o back-end em python. Um curso de python com django', 120, 60, 2018),
+('HTML 5','Aprenda a desenvolver sites com a linguagem de marcação que tem sido tao popular nos ultimos anos', 40, 20, 2015),
+('Java','Aprenda a liguagem java', 120, 60, 2018),
+('Angular','Aprenda sobre esta framework', 60, 30, 2020),
+('.Net','Aprenda esta flexível liguagem de programação', 80, 45, 2017),
+('JavaScript','Aprenda desenvolver sites com JavasCript', 100, 50, 2018),
+('SQL','Aprenda a desenvolver bancos de dados', 80, 30, 2019),
+('PHP','Saiba tudo sobre back-end com esta linguagem', 90, 45, 2015),
+('Spring','Aprenda tudo sobre esta tecnologia', 40, 20, 2019,),
+('React','Domine esta framework', 60, 30, 2018),
+('Node.js','Saiba mais sobre esta tecnologia do JS', 80, 60, 2019),
+('Java para web','Aprenda a desenvolver sites com a linguagem Java', 40, 20, 2016 ),
+('C#','Aprenda a desenvolver programas com a linguagem de programação C#', 100, 34, 2017),
+('.NET','Aprenda mais sobre a liguagem .NET', 60, 30 ,2014 ),
+('Ruby','Aprofunde seus conhecimentos em Ruby', 60, 30, 2015,),
+('Cobol','Saiba como escrever codigos pequenos com o professor Fabio Moura', 80, 40, 1992 ),
+('Go Lang','Aprenda esta linguagem da google', 40, 20, 2017),
+('C','Aprenda essa liguagem classica e famosa', 120, 60, 2014);

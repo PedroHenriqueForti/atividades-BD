@@ -1,0 +1,33 @@
+create database if not exists animais;
+
+use animais;
+
+create table animal(
+id int not null primary key auto_increment,
+nome varchar(30) not null,
+genero enum("M", "F"),
+nomeraca varchar(40) not null,
+idade int not null
+);
+
+insert into animal (nome, genero, nomeraca, idade) values
+ ("Beatriz", "F", "Chiuaua", 15),
+ ("Renato", "M", "Pastor Alemão", 18),
+ ("Luigi", "M", "Pastor Alemão", 16),
+ ("Belinha", "F", "Chiuaua", 13),
+ ("Salsicha", "M", "Pastor Belga", 8),
+ ("Jack", "F", "Pug", 10),
+ ("Filó", "F", "Pastor Belga", 12),
+ ("Totó", "M", "Pug", 6);
+
+desc animal;
+
+select * from animal;
+
+select avg(idade), genero from animal group by genero;
+
+select avg(idade), nomeraca from animal group by nomeraca;
+
+select min(idade) from animal;
+
+select max(idade) from animal;

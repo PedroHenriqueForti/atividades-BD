@@ -1,0 +1,109 @@
+alguns comandos a aparte( select * from eventos; (nome da tabela)
+show tables;      desc table; ( nome da tabela no lugar do table). )
+
+drop database Eventos if exists;
+
+create database eventos;
+
+use eventos;
+
+create table participantes (
+idParticipantes int (11) not null primary key auto_increment,
+nomeParticipantes varchar(80) not null,
+telefoneParticipantes varchar(14) not null,
+emailParticipantes varchar(50) not null,
+ membroParticipantes enum('s','n') not null
+);
+
+ insert into participantes (nomeParticipantes, telefoneParticipantes, emailParticipantes, membroParticipantes) values 
+("Julianin Santos Hidalgo", "997621325", "H.santos@gmail.com", "s"),
+("Lucca Ovonildo Bagues", "997624511", "Lucca.b4gues@outlook.com", "n"),
+("Joel Tede Souza", "991221567", "t.j.sousa@yahoo.com", "n"),
+("Laisa Asustadinho frin", "994525671", "Lala.leveisusto@hotmail.com", "n"),
+("kick buttowski Blyat", "991211572", "KB.Blyat123@outlook.com", "s"),
+("pereira Pungai silva", "991567563", "Pung.perei01@gmail.com", "s");
+
+alter table participantes add column sexoParticipantes enum('M','F') not null;
+
+where idParticipantes = 4 
+
+create table eventos (
+idEventos int not null primary key auto_increment
+descEventos varchar(200),
+obsEventos text
+);
+ 
+insert into eventos (descEventos, obsEventos, dataevento) values
+("Parada dos Eletricistas", "Palestras em relacao ao senai marilia"),
+("Show do Mucca", "Stand up comedy no teatro municipal de marilia"),
+("Evento nerd", "Univem e Unimar aprem portas para um mundo nerd"),
+("Passeata Animalia", "Diversao com bixos de estimacao em publico"),
+("Computer Week", "Semana de TI e programacao de jogos"),
+("Passeata de Carros", "Carros velha guarda em exposicao na rua");
+
+ create table participacao (
+idevento int not null,
+idparticipante int not null,
+constraint fk_participante foreign key(idparticipante)
+references participante(idparticipante), 
+constraint fk_eventos foreign key(idevento)
+references eventos(ideventos)
+);
+alter table participacao modify column idcertificadoparticipacao varchar(11) not null;
+
+alter table participacao add column idcertificadoparticipacao int not null;
+
+insert into participacao(idevento, idparticipante, idcertificadoparticipacao) values 
+(1,1,1), (1,2,1), (1,3,1), (1,4,1), (1,2,1) ;
+
+select p.participante, e.descevento, a.certificadoparticipacao
+from participante p, evento e, participacao a
+where p.idparticipante = a.idparticipante and e.idevento = a.idevento;
+
+
+ create table funcionarios(
+ idfuncionarios int primary key not null auto_increment,
+ nome varchar(40) not null,
+ descricao text not null,
+ datanasc date not null,
+ endereço int not null,
+ contato int not null
+);
+
+-------------------------------------------------------------------------------------------------------------   
+                                                               tabela da avivah
+-------------------------------------------------------------------------------------------------------------
+use avivah
+desc funcionarios;
+ alter table funcionarios add column idsetor int not null;
+
+
+
+
+create table armazenamento (
+idSetor int not null primary key auto_increment,
+nomeSetor  varchar(100) not null,
+numFilial int not null,
+idChefe int not null
+);
+
+insert into armazenamento(nomeSetor, numFilial, idChefe) values
+("cama", 1, 1),     //.. aspas somente nos valores que não são inteiros..
+("banho", 1, 1),
+("moveis", 2, 2),
+("utilidades domesticas", 2, 1),
+("banho", 2, 3),
+("cozinha", 3, 2),
+("garagem", 3, 1),
+("jardinagem", 3, 3)
+;
+    SELECT * FROM armazenamento;
+ select * from idSetor from armazenamento;
+--------------------------------------------------------------------------------------------------------------
+/-funcionarios agora -/
+
+--desc funcionarios;
+
+--SELECT * FROM funcionarios;
+
+--SELECT idfunc, nome FROM funcionarios;

@@ -1,0 +1,123 @@
+Comandos MySQL
+Após a instalação completa do MySQL, alguns programas, que fazem parte do pacote, ajudam a conectar ao servidor e a realizar todas as tarefas administrativas. O cliente mysql é o principal deles e é nele que este artigo manterá o foco.
+
+Como conectar ao MySQL
+Conecte-se ao servidor MySQL com o seguinte comando:
+
+mysql -h NOME-DO-SERVIDOR -u NOME-DO-USUARIO
+Após dar o comando, o sistema vai pedir a sua senha de usuário.
+Dica: Se você instalou o MySQL no seu próprio PC, pode usar localhost no lugar de NOME-DO-SERVIDOR.
+No exemplo, a seguir, veja como se conectar como root:
+
+mysql -u root -p
+Se não foi você quem fez a instalação, pode precisar contatar o administrador do banco de dados para saber que valores usar para conectar ao servidor MySQL.
+Em servidores remotos, você provavelmente precisará usar o SSH para se conectar ao MySQL.
+
+Como criar um banco de dados no MySQL
+O comando para criar um banco de dados é este:
+
+CREATE DATABASE nome-do-banco;
+Para ver todos os bancos de dados existentes no servidor:
+
+SHOW DATABASES;
+Em um exemplo prático, a criação do banco de dados testes, ficaria assim:
+
+CREATE DATABASE testes;
+Você pode exibir os bancos de dados criados, através do comando SHOW:
+
+SHOW DATABASES;
+Antes de criar uma tabela ou realizar qualquer operação, é necessário selecionar o banco de dados que vai ser usado:
+
+USE testes;
+LEIA MAIS:
+Como criar bancos de dados
+Como criar uma tabela no MySQL
+Como já foi dito, antes de criar uma tabela, você precisa indicar o banco de dados a ser usado – dentro do qual vai criar uma tabela. Que tal usarmos o exemplo do tópico anterior?
+
+USE testes;
+Agora, vamos criar uma tabela dentro dele, com o nome clientes:
+
+1
+CREATE TABLE `clientes` (
+2
+  `idCliente` mediumint(8) unsigned NOT NULL auto_increment,
+3
+  `nomeEmpresa` varchar(255),
+4
+  `nomeDiretor` varchar(255) default NULL,
+5
+  `numEmpregados` mediumint default NULL,
+6
+  PRIMARY KEY (`idCliente`)
+7
+) AUTO_INCREMENT=1;
+Você pode pedir pro sistema exibir todas as tabelas presentes no banco de dados selecionado:
+
+SHOW tables;
+Para obter informações sobre uma tabela, você pode usar o comando DESCRIBE ou DESC:
+
+DESCRIBE clientes;
+Como inserir mais dados em uma tabela
+Vamos “povoar” mais a nossa tabela com alguns dados:
+
+1
+INSERT INTO `clientes` (`idCliente`,`nomeEmpresa`,`nomeDiretor`,`numEmpregados`) VALUES (1,"Malesuada Inc.","Johnny Pedd",4847);
+2
+INSERT INTO `clientes` (`idCliente`,`nomeEmpresa`,`nomeDiretor`,`numEmpregados`) VALUES (2,"Aliquam Inc.","Al Capino",4135);
+3
+INSERT INTO `clientes` (`idCliente`,`nomeEmpresa`,`nomeDiretor`,`numEmpregados`) VALUES (3,"Union Carbide","Robert Ne Diro",3755);
+4
+INSERT INTO `clientes` (`idCliente`,`nomeEmpresa`,`nomeDiretor`,`numEmpregados`) VALUES (4,"Magna Carta Ltda.","Wenzel Dashington",3071);
+5
+INSERT INTO `clientes` (`idCliente`,`nomeEmpresa`,`nomeDiretor`,`numEmpregados`) VALUES (5,"Nunc Corp.","",3859);
+6
+INSERT INTO `clientes` (`idCliente`,`nomeEmpresa`,`nomeDiretor`,`numEmpregados`) VALUES (6,"In Company","Macaulay Bulkin",4440);
+Lembra que o campo idCliente foi criado com o parâmetro auto_increment. Seu preenchimento é automático. Você não precisa informar o seu valor, portanto:
+
+1
+INSERT INTO `clientes`
+2
+(`idCliente`,`nomeEmpresa`,`nomeDiretor`,`numEmpregados`)
+3
+VALUES ('',"GameCorp.","Din Viesel",2071);
+LEIA MAIS:
+Guia – como criar tabelas
+Mecanismos de armazenamento – veja quais storage engines podem ser usados para criar tabelas no MySQL
+Crie tabelas a partir de uma declaração SELECT – como criar uma tabela a partir de outra existente
+Como ver os registros na tabela com o comando SELECT
+Tal como o nome sugere, o comando SELECT seleciona e exibe os registros gravados na tabela.
+A maneira mais simples de usá-lo é essa:
+
+SELECT * FROM clientes;
+Você pode refinar a pesquisa de inúmeras maneiras.
+Se quiser ver apenas o conteúdo dos campos id_cliente e nome_empresa, use-o assim:
+
+SELECT id_cliente, nome_empresa FROM clientes;
+SAIBA MAIS
+Use SELECT para criar uma nova tabela – veja mais um exemplo de uso do comando.
+O comando SELECT no MySQL – veja aqui mais exemplos de uso do comando SELECT.
+Como remover um registro de uma tabela
+A sintaxe do comando para apagar um registro é:
+
+DELETE FROM nome-da-tabela WHERE nome-da-coluna=texto;
+Veja um exemplo prático de uso do comando DELETE:
+
+DELETE FROM clientes WHERE nomeEmpresa = 'GameCorp';
+Com este comando, TODOS os registros que tiverem nomeEmpresa = 'GameCorp' serão eliminados. Neste caso, há apenas 1. Mas vamos imaginar que houvesse 10 ou 100 registros em que o nomeEmpresa fosse igual a GameCorp. Neste caso, seria necessário usar outro campo como referência para encontrar o registro que eu desejo eliminar. No nosso caso, há o campo idCliente, que é único – ele não se repete dentro da tabela:
+
+DELETE FROM clientes WHERE idCliente = 7;
+Como remover uma tabela ou um banco de dados
+Seja cuidadoso(a). O comando DROP apaga permanentemente uma tabela ou um banco de dados. Veja como usar o DROP para eliminar uma tabela:
+
+DROP TABLE nome-da-tabela;
+ou, como remover um banco de dados:
+
+DROP DATABASE nome-do-banco;
+Como limpar uma tabela
+Para limpar uma tabela, use o comando TRUNCATE. Internamente, ele remove a tabela primeiro e, depois, a recria com a mesma estrutura – só que sem os dados. Se houver um contador AUTO_INCREMENT, na tabela em questão, ele é zerado e recolocado. Veja como funciona:
+
+TRUNCATE TABLE nome-da-tabela;
+Como alterar um registro no MySQL
+Aqui, o comando UPDATE entra em ação. Vamos ver como usá-lo para alterar o valor de um campo dentro de um registro:
+
+UPDATE clientes SET numEmpregados=1999 WHERE idCliente = 1;

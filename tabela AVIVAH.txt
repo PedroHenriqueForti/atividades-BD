@@ -1,0 +1,174 @@
+ enter
+
+  drop database;
+
+  create database avivah;
+
+  use avivah;
+-------------------------------------------------------------------------------------------------------
+create table acessosis(
+ idfass int(11)  primary key not null  auto_increment 
+ nivel int(11)  not null ,
+ login  varchar(50) not null,
+ nome  varchar(50)not null,
+senha  int(6)  not  null,
+);
+-------------------------------------------------------------------------------------------------------
+ create table funcionarios(
+ idfuncionarios int primary key not null auto_increment,
+ nome varchar(40) not null,
+ descricao text not null,
+ datanasc date not null,
+ endereço int not null,
+ contato int not null
+);
+-------------------------------------------------------------------------------------------------------
+create table fornecedores(
+idfornecedores int primary key not null auto_increment,
+num_carteira_tb varchar(30) not null,
+fgts varchar(11) not null,
+cpf  int(11) not null,
+cnpj int(14) not null,
+);
+--------------------------------------------------------------------------------------------------------
+
+create table fabricantes (
+idfabri int primary key not null auto_increment,
+codpro int(18) not null,
+tel_fabri int(15) not null,
+tel2_fabri int(15) not null,
+site_fabri varchar(150) not null,
+email_fabri varchar(40) not null,
+estado_fabri varchar(80) not null,
+cidade_fabri varchar(40) not null,
+rua_fabri varchar(80) not null,
+num_rua_fabri int(10) not null,
+entregas_fabri varchar(200) not null
+);
+
+---------------------------------------------------------------------------------------------------------
+create table produtos(
+idprodu int(11)  primary key not null auto_increment,
+nomepro varchar(50) not null,
+preco decimal(3,2) not null,
+dataprodu char(10) not null,
+datavali char(10) not null,
+marca  varchar(50) not null,
+nomefabr  varchar(50)  not null,
+codpro char(10) not null,
+numfabr char(11) not null,
+emailfabr  varchar(50) not null
+);
+--------------------------------------------------------------------------------------------------------
+createdesc table contatos(
+ idcontatos int foreign key not null auto_incremente,
+ telcelular int(11) not null,
+ telfixo int(10) not null,
+ telcelpai int(11) not null,
+ telcelmae int(11) not null,
+ telopcional int (11) not null
+);
+----------------------------------------------------------------------------------------------------------
+
+create table armazenamento (
+idSetor int not null primary key auto_increment,
+nomeSetor  varchar(100) not null,
+numFilial int not null,
+idChefe int foreign key not null
+);
+-----------------------------------------------------------------------------------------------------   
+
+
+insert into funcionarios(
+" 1, lucas Clemente, masculino, 12/04/2003, Estagiario, Adiministracao, 1492652418, são paulo, tupingue, Silverino, Rua luisinha azul, 123,  8803696751, 9904236722, 99017391296, lucaCleau3Ente@gmail.com, 0",
+
+"2, Leonardo vacdeia, masculino, 02/06/1980, Vendedor, Vendas, 1236652483, parana, rio branco, Castelo Branco, Rua desaparecida sumida, 721, 01, 1258736732, 1465236990, 15761391296, vacaLeo@yahoo.com, 0",
+
+"3, joselia Xanagua, feminino, 26/04/1989, Secretaria, Adiministracao, 1576452567, Sao paulo, Marilia, Palmitalinio, Rua Castellito, 221, 9943736654, 9943216990, 9802139546, GabiXanAgua@outlook.com, 0",
+
+ "4, Fabio hidalgo, outros, 05/05/1995, Secretario, Adiministracao, 1123452567, Minas Gerais, linamba, Baia, Rua dom Santo, 451, 1427346654, 6854213230, 9632139541, hidalguinho@gmail.com, 0", 
+
+"5, Pedro kikonlo, masculino, 13/03/1296, Estagiario, Informatica, 3258852567, rondonia, luvalandia, jeferson Mario, Rua Adalina, 753, 034, 21583354654, 15874513230, 9802139533, Fucktheforce@yahoo.com, 0"
+
+" 6, Julio duatinha, masculino, 15/06/2004, Estagiario, Adiministracao, 2359852418, são jose, tupingue, lurdinha, Rua boate azul, 256,  2134696751, 9904234562, 25987391296, jujuduart32@gmail.com, 0",
+
+"7, Luis Casdeia, masculino, 22/10/1990, Vendedor, Vendas, 2569652483, Parana, Cascavel, Castelo Preto, Rua aqeula sumida, 721, 01, 1258736732, 1465236990, 15761391296, vacaLeo@yahoo.com, 0",
+
+"8, pidgey Xanagua, outros, 23/04/1984, Secretaria, Adiministracao, 1256452567, Sao paulo, Marilia, Palmitalinio, Rua Castellito, 221, 9943736654, 9943216990, 9802139546, GabiXanAgua@outlook.com, 0",
+
+ "9, Snorlax hidalgo, outros, 25/11/1997, Secretario, Adiministracao, 2359452567, Minas Gerais, tilambuco, Baia, Rua dom cesão, 235, 3568346654, 2134213230, 3652139541, snorlaxguinho@gmail.com, 0", 
+
+"10, Pikachu kikonlo, masculino, 17/04/1298, Estagiario, Informatica, 1235852567, pellet, kikalandia, mewtwo Mario, Rua kikalina, 663,  23563354654, 45894513230, 4589139533, choquedotrovão@yahoo.com, 0"
+
+" 11,Chicorita Clemente, masculino, 12/04/2003, Estagiario, Adiministracao, 1492652418, cerulian, arceus, luisinha, Rua chicote, 245,  8803696751, 9904236722, 99017391296, chicotedevinhaEnte@gmail.com, 0",
+
+"12, Bulbassauro lopes, masculino, 02/06/1980, Vendedor, Vendas, 1236652483, parana, rio branco, Castelo Branco, Rua desaparecida sumida, 721, 01, 1258736732, 1465236990, 15761391296, vacaLeo@yahoo.com, 0",
+
+"13, Charizard Xanagua, feminino, 26/04/1989, Secretaria, Adiministracao, 1576452567, Sao bento, jundiai,tapulele, Rua adolf., 236, 3864936654, 9567216990, 9802139546, GabiXanAgua@outlook.com, 0",
+
+ "14, tapukoko hidalgo, outros, 05/05/1995, Secretario, Adiministracao, 3598452567, lucias Gerais, linamba, Baia, Rua dom Santo, 451, 1568146654, 3568213230, 9632139541, tupuhidal@gmail.com, 0", 
+
+"15, jiglipaff adamastor, masculino, 13/03/1296, Estagiario, Informatica, 3258852567, leandrodonia, esquinalandia, jeferson Mario, Rua Adalina, 853, 334, 24683354654, 56184513230, 3692139533, jiglipuf.puf@yahoo.com, 0"
+
+);
+
+-------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------------------------------
+                                                               tabela da avivah 04/11/2019  
+-------------------------------------------------------------------------------------------------------------
+use avivah
+desc funcionarios;
+ alter table funcionarios add column idsetor int not null;
+
+create table armazenamento (
+idSetor int not null primary key auto_increment,
+nomeSetor  varchar(100) not null,
+numFilial int not null,
+idChefe int foreign key not null
+);
+
+insert into armazenamento(nomeSetor, numFilial, idChefe)
+("cama", "1", "1"),
+("banho","1","1"),
+("moveis","2","2"),
+("utilidades domesticas","2","1"),
+("banho","2","3"),
+("coinha","3","2"),
+("garagem","3","1"),
+("jardinagem","3","3")
+-----------------------------------------------------------------------------------------------------------
+   SELECT * FROM armazenamento;
+ select * from idSetor from armazenamento
+/-funcionarios agora -/
+
+--desc funcionarios;
+-------------------------------------------------------------------------------------------------------------
+>Selecione TODOS registros de cada tabela (faça a seleção em comandos separados).
+
+--select * from funcionarios;
+--select * from produtos;
+--select * from fornecedores;
+--select * from funcionarios;
+--select * from acessosis;
+--select * from fabricantes;
+
+Selecione os funcionários, fornecedores, produtos e fabricantes ordenados por seus nomes (cada seleção, um comando separado).
+
+--select idfunc, nome from funcionarios;
+--select 
+
+--SELECT idfunc, nome FROM funcionarios;
+------------------------------------------------------------------------------------------------------------------
+ 
+select idfunc, nome, sexo, datanasc, sexo, cargo, cpf, estado, cidade, bairro, departamento, rua, numcasa, numero, telefone, email, idsetor from funcionarios ;
+select * from;
+select   from;
+select   from;
+select   from;
+select   from;
+select   from;
+
+

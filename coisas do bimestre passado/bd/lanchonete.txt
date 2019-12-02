@@ -1,0 +1,26 @@
+-- criando o banco de datos da lanchonete
+
+drop database if exists lanchonete;
+
+create database if not exists lanchonete;
+
+use lanchonete;
+
+create table produtos (
+    produto_cod int not null primary key auto_increment,
+    produto_nome varchar(50) not null,
+    produto_precoUni decimal(5,2) not null,
+    produto_precoVenda decimal(5,2),
+    produto_qtdeEst int
+);
+
+insert into produtos (produto_nome, produto_precoUni, produto_precoVenda, produto_qtdeEst) values 
+    ("Chocolate Talento 50g", 3.50, 5.50, 60),
+    ("Chocolate Garoto 60g", 3.75, 6.00, 90),
+    ("Refrigerante Coca-Cola Lata 220mL", 2.50, 4.00, 100),
+    ("Refrigerante Coca-Cola Garrafa 600mL", 4.00, 6.00, 60),
+    ("Refrigerante Coca-Cola Garrafa 2L", 6.00, 10.00, 100),
+    ("Refrigerante Tubaina Garrafa 2L", 5.00, 8.00, 80),
+    ("", , ,),
+    ("", , ,),
+    ("", , ,);

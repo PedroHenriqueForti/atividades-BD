@@ -1,0 +1,50 @@
+drop database if exists estados;
+
+create database if not exists estados;
+
+use estados;
+
+create table uf(
+id int not null primary key auto_increment,
+nome varchar (50) not null,
+populacao int not null,
+porcentagemtotal decimal(4,1) not null );
+
+insert into uf (nome, populacao, porcentagemtotal) values
+("São Paulo", 45538936, 22.1 ),
+("Minas Gerais", 21040662, 10.2 ),
+("Rio de Janeiro", 17159960, 8.1 ),
+("Bahia", 14812617, 7.4 ),
+("Paraná", 11348937, 5.5 ),
+("Rio Grande do Sul", 11329605, 5.5),
+("Pernambuco", 9496294, 4.6 ),
+("Ceara", 9075649, 4.4 ),
+("Pará", 8513494, 4.0 ),
+("Santa Cantarina", 7075494, 3.4 ),
+("Maranhão", 7035055, 3.2 ),
+("Goiás", 6921161, 3.2 ),
+("Amazonas", 4080611, 1.9 ),
+("Paraiba", 3996496, 1.9 ),
+("Espirito Santo", 3972388, 1.9 ),
+("Rio Grande do Norte", 3479010, 1.7 ),
+("Mato Grosso", 3441998, 1.6 ),
+("Alagoas", 3322820, 1.6 ),
+("Piauí", 3264531, 1.6 ),
+("Distrito Federal", 2974703, 1.4 ),
+("Mato Grosso do Sul", 2748023, 1.3 ),
+("Sergipe", 2278308, 1.1 ),
+("Rondonia", 1757589, 0.9 ),
+("Tocantins", 1555119, 0.7 ),
+("Acre", 869265, 0.4 ),
+("Amapá", 829494, 0.4 ),
+("Roraima", 576568, 0.2);
+
+-- select sum(populacao) as "População Total dos Estados" from uf;
+
+-- select nome, populacao from uf like nome = 'S%'
+
+-- select avg(populacao) as "População Média dos Estados" from uf;
+
+-- select min(populacao) as "População Mínima dos Estados" from uf;
+
+-- select nome as "Nome do Estado", populacao as "População" from uf where populacao between 500000 and 10000000 order by populacao asc;
